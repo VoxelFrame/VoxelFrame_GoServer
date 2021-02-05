@@ -6,9 +6,9 @@ import (
 	// "io"
 	// "net"
 	// "time"
-	"vfserver/network"
+	"./network"
 
-	"vfserver/game"
+	"./game"
 )
 
 func main() {

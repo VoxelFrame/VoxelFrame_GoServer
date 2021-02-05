@@ -5,6 +5,7 @@ go 1.14
 require (
 	github.com/go-delve/delve v1.6.0 // indirect
 	github.com/go-redis/redis v6.15.9+incompatible
+	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.4.3
 	github.com/gorilla/websocket v1.4.2
 	github.com/mattn/go-colorable v0.1.8 // indirect

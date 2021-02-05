@@ -1,0 +1,32 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "proto",
+            "type": "shell",
+            // "command": "mingw32-make"
+            "windows": {
+                "command": "protoc --gofast_out=. *.proto",
+                // "command": "${config:cmake.cmakePath}",
+                // "command":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\bin\\Hostx64\\x64\\nmake"
+                // "args": [
+                //     "--build",
+                //     "e:/pa_files/project/game/VoxelFrame/VoxelFrame_CppClient/build_msvc_x64",
+                //     "--config",
+                //     "Debug",
+                //     "--target",
+                //     "all",
+                //     "--",
+                //     "-j",
+                //     "6"
+                // ],
+                "problemMatcher": [],
+                "options": {
+                    "cwd": "proto" // 表示当前执行目录build文件夹
+                },
+            }
+        },
+    ],
+}

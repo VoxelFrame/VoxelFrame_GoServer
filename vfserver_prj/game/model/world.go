@@ -1,15 +1,17 @@
-package game
+package model
 
 // import{
 // 	// "fmt"
 // }
 import (
 	"sync"
+	"time"
 )
 
 //WorldModel 世界数据模型
 type WorldModel struct {
-	name string
+	Name         string
+	chunkManager ChunkManager
 }
 
 var instance *WorldModel
@@ -22,10 +24,23 @@ func GetWorldInstance() *WorldModel {
 
 	if instance == nil {
 		instance = &WorldModel{} // unnecessary locking if instance already created
-		instance.name = "WorldModelName"
+		instance.Name = "WorldModelName"
 	}
 
 	return instance
+}
+
+func (wm WorldModel) Start() {
+	go wm.goroutine()
+}
+func (wm WorldModel) goroutine() {
+	for {
+		wm.tick()
+		time.Sleep(time.Millisecond * 20)
+	}
+}
+func (wm WorldModel) tick() {
+	
 }
 
 // func Init

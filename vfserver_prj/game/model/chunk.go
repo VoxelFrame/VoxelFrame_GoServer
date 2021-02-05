@@ -1,4 +1,8 @@
-package game
+package model
+
+import (
+	"sync"
+)
 
 // "sync"
 // "math"
@@ -16,4 +20,8 @@ type ChunkKey struct {
 //ChunkModel 区块的数据模型
 type ChunkModel struct {
 	blockDataArr [chunkSize]BlockKey
+}
+
+type ChunkManager struct {
+	ChunkMap sync.Map
 }
