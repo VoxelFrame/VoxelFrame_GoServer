@@ -1,4 +1,4 @@
-package playerPart
+package _player
 
 import (
 	// "container/list"

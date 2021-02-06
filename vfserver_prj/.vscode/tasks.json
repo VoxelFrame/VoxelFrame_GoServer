@@ -28,5 +28,55 @@
                 },
             }
         },
+        {
+            "label": "go build",
+            "type": "shell",
+            // "command": "mingw32-make"
+            "windows": {
+                "command": "go build",
+                // "command": "${config:cmake.cmakePath}",
+                // "command":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\bin\\Hostx64\\x64\\nmake"
+                // "args": [
+                //     "--build",
+                //     "e:/pa_files/project/game/VoxelFrame/VoxelFrame_CppClient/build_msvc_x64",
+                //     "--config",
+                //     "Debug",
+                //     "--target",
+                //     "all",
+                //     "--",
+                //     "-j",
+                //     "6"
+                // ],
+                "problemMatcher": [],
+                // "options": {
+                //     "cwd": "proto" // 表示当前执行目录build文件夹
+                // },
+            }
+        },
+        {
+            "label": "go run",
+            "type": "shell",
+            // "command": "mingw32-make"
+            "windows": {
+                "command": "./script/build_run.cmd",
+                // "command": "${config:cmake.cmakePath}",
+                // "command":"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Community\\VC\\Tools\\MSVC\\14.16.27023\\bin\\Hostx64\\x64\\nmake"
+                // "args": [
+                //     "--build",
+                //     "e:/pa_files/project/game/VoxelFrame/VoxelFrame_CppClient/build_msvc_x64",
+                //     "--config",
+                //     "Debug",
+                //     "--target",
+                //     "all",
+                //     "--",
+                //     "-j",
+                //     "6"
+                // ],
+                "problemMatcher": [],
+                // "options": {
+                //     "cwd": "proto" // 表示当前执行目录build文件夹
+                // },
+            }
+        },
     ],
 }

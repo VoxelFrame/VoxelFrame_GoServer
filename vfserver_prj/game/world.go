@@ -6,16 +6,16 @@ package game
 import (
 	"sync"
 	"time"
-
-	"./playerPart"
+	"vfserver/game/_chunk"
+	"vfserver/game/_player"
 )
 
 //WorldModel 世界数据模型
 type WorldModel struct {
 	Name          string
-	chunkManager  ChunkManager
+	chunkManager  _chunk.ChunkManager
 	tickCount     int64
-	playerManager *playerPart.PlayerManager
+	playerManager *_player.PlayerManager
 }
 
 var instance *WorldModel
@@ -30,7 +30,7 @@ func GetWorldInstance() *WorldModel {
 		instance = &WorldModel{} // unnecessary locking if instance already created
 		instance.Name = "WorldModelName"
 		instance.tickCount = 0
-		instance.playerManager = playerPart.NewPlayerManager()
+		instance.playerManager = _player.NewPlayerManager()
 	}
 
 	return instance
@@ -41,8 +41,11 @@ func (wm *WorldModel) Start() {
 }
 func (wm *WorldModel) goroutine() {
 	for {
-		wm.Tick()
-		time.Sleep(time.Millisecond * 20)
+		for i := 0; i < 50; i++ {
+			wm.Tick()
+		}
+
+		time.Sleep(time.Millisecond) /// 50
 	}
 }
 func (wm *WorldModel) Tick() {

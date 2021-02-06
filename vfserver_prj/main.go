@@ -1,14 +1,13 @@
 package main
 
 import (
+	"vfserver/game"
+	"vfserver/network"
 	// "bufio"
 	// "fmt"
 	// "io"
 	// "net"
 	// "time"
-	"./network"
-
-	"./game"
 )
 
 func main() {

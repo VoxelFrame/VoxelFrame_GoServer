@@ -1,10 +1,10 @@
-package playerPart
+package _player
 
 import (
 	"container/list"
-
-	"../../base"
-	"../../game"
+	"vfserver/base"
+	"vfserver/game/_chunk"
+	// "../../game"
 	// "../game"
 )
 
@@ -12,7 +12,7 @@ import (
 type Player struct {
 	id          int32
 	position    base.Vector3
-	chunkKeyPos game.ChunkKey
+	chunkKeyPos _chunk.ChunkKey
 	// sentChunkKeys ChunkKey
 	sentChunkKeys list.List
 }
@@ -28,9 +28,8 @@ func (p *Player) Tick50() {
 	p.checkSentChunkKeys()
 }
 
-
 func (p *Player) moveTo(pos base.Vector3) {
-	oldPos:=p.position
+	oldPos := p.position
 	p.position = pos
 	p.checkChunkMoved(oldPos)
 }

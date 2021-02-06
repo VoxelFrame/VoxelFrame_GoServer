@@ -1,7 +1,8 @@
-package game
+package _chunk
 
 import (
 	"sync"
+	"vfserver/game/_block"
 )
 
 // "sync"
@@ -20,7 +21,7 @@ type ChunkKey struct {
 
 //ChunkModel 区块的数据模型
 type ChunkModel struct {
-	blockDataArr [chunkSize]BlockKey
+	blockDataArr [chunkSize]_block.BlockKey
 }
 
 type ChunkManager struct {
