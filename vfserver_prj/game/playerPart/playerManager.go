@@ -30,9 +30,8 @@ func (pm *PlayerManager) Tick50() {
 	playerMap := pm.playerMap
 
 	playerMap.Range(func(k, v interface{}) bool {
-		var player *Player
-		player = (*Player)(unsafe.Pointer(&v))
-
+		player := (*Player)(unsafe.Pointer(&v))
+		player.Tick50()
 		// fmt.Println("iterate:", k, v)
 		return true
 	})

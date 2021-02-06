@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"./player"
+	"./playerPart"
 )
 
 //WorldModel 世界数据模型
@@ -15,7 +15,7 @@ type WorldModel struct {
 	Name          string
 	chunkManager  ChunkManager
 	tickCount     int64
-	playerManager *player.PlayerManager
+	playerManager *playerPart.PlayerManager
 }
 
 var instance *WorldModel
@@ -30,7 +30,7 @@ func GetWorldInstance() *WorldModel {
 		instance = &WorldModel{} // unnecessary locking if instance already created
 		instance.Name = "WorldModelName"
 		instance.tickCount = 0
-		instance.playerManager = player.NewPlayerManager()
+		instance.playerManager = playerPart.NewPlayerManager()
 	}
 
 	return instance

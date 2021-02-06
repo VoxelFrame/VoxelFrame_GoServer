@@ -7,14 +7,15 @@ import (
 // "sync"
 // "math"
 const (
-	chunkSize int32 = 64 * 64 * 64
+	ChunkWidth int32 = 64
+	chunkSize  int32 = ChunkWidth * ChunkWidth * ChunkWidth
 )
 
 //ChunkKey 区块在世界map中的键
 type ChunkKey struct {
-	x int
-	y int
-	z int
+	X int
+	Y int
+	Z int
 }
 
 //ChunkModel 区块的数据模型
