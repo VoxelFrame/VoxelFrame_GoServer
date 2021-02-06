@@ -8,6 +8,8 @@ import (
 	// "../game"
 )
 
+
+
 //Player 玩家
 type Player struct {
 	id          int32
@@ -34,7 +36,7 @@ func (p *Player) moveTo(pos base.Vector3) {
 	p.checkChunkMoved(oldPos)
 }
 
-//首次进入，必然进行区块的加载（）
+//首次进入并配置人物位置，必然进行区块的加载（）
 func (p *Player) moveToAndUpdateChunk(pos base.Vector3) {
 	p.moveTo(pos)
 	p.updatePlayerChunkKeys()

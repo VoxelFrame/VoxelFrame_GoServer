@@ -1,18 +1,48 @@
 package _player
 
 import (
-	"fmt"
 	"vfserver/base"
+	"vfserver/game/_block"
 	"vfserver/game/_chunk"
 	// "../game"
 )
+
+var (
+	loadChunkRadius int
+	chunkRangeSet   []_chunk.ChunkKey
+)
+
+func init() {
+	ResetChunkRange(5)
+	// fmt.Println("init 2")
+}
+
+//ResetChunkRange 重新设置区块加载范围，
+//考虑到后期可能要动态配置这样的
+func ResetChunkRange(r int) {
+	loadChunkRadius = r
+	chunkRangeSet = make([]_block.BlockKey, r*r*r, 0)
+	for x := -r+1; x < loadChunkRadius; x++ {
+		for y := -r+1; y < loadChunkRadius; y++ {
+			for z := -r+1; z < loadChunkRadius; z++ {
+				if x*x+y*y+z*z < r*r {
+					append(chunkRangeSet,
+						_chunk.NewChunkKey(
+							x,y,z
+						)
+					)
+				}
+			}
+		}
+	}
+}
 
 //秒级轮询
 //sendChunkKeys
 //记录已经发送的区块键，
 //如果超出范围，就进行倒计时消失。进入范围就把倒计时恢复
 func (p *Player) checkSentChunkKeys() {
-	fmt.Printf("1ms")
+	// fmt.Printf("1ms")
 }
 
 // 在移动的时候，判断区块位置是否变化，
@@ -24,8 +54,18 @@ func (p *Player) checkSentChunkKeys() {
 // 服务端 会过比客户端短的时间清除。（暂定5s）
 // 客户端,服务端 超出一定距离。直接清除
 func (p *Player) updatePlayerChunkKeys() {
+	//计算区块，首先需要半径
+	for _,v:=range chunkRangeSet{
+		// if(v.X==v.Y==v.Z==0){
 
+		// }else if(v.X==v.Y==0||v.X==v.Z==0||v.Z==v.Y==0){
+
+		// }else if()
+
+	}
 }
+
+// 在移动的时候，判断区块位置是否变化，
 func (p *Player) checkChunkMoved(oldPos base.Vector3) {
 	newChunkPos := convPlayerPosToChunkPos(p.position)
 	oldChunkPos := convPlayerPosToChunkPos(oldPos)
