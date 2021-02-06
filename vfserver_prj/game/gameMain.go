@@ -3,13 +3,13 @@ package game
 import (
 	"fmt"
 	// "time"
-	"./model"
+	// "./model"
 )
 
 //Init 启动游戏
 func Init() {
 	//刚开始，就先做一个世界的
-	var mainWorld = model.GetWorldInstance()
+	var mainWorld = GetWorldInstance()
 	fmt.Println("world name is:" + mainWorld.Name)
 	mainWorld.Start()
 	// worldModel.start()

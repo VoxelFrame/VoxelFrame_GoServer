@@ -1,25 +1,32 @@
-package model
+package player
 
 import (
+	"container/list"
+
 	"../../base"
+	"../game"
 )
 
 type Player struct {
-	position      base.Vector3
-	chunkKeyPos   ChunkKey
-	sentChunkKeys ChunkKey
+	id          int32
+	position    base.Vector3
+	chunkKeyPos game.ChunkKey
+	// sentChunkKeys ChunkKey
+	sentChunkKeys list.List
 }
 
-func (p Player) tick50(){
-	
+func (p Player) tick50() {
+	p.checkSentChunkKeys()
 }
+
 //秒级轮询
-//sendChunkKeys 
+//sendChunkKeys
 //记录已经发送的区块键，
 //如果超出范围，就进行倒计时消失。进入范围就把倒计时恢复
-func (p Player) checkSentChunkKeys(){
-	
+func (p Player) checkSentChunkKeys() {
+
 }
+
 // 在移动的时候，判断区块位置是否变化，
 // 若变化则需要调用这个函数，
 // 并且发送玩家之前未发送过的区块
