@@ -1,12 +1,14 @@
-package player
+package playerPart
 
 import (
 	"container/list"
 
 	"../../base"
-	"../game"
+	"../../game"
+	// "../game"
 )
 
+//Player 玩家
 type Player struct {
 	id          int32
 	position    base.Vector3
@@ -15,7 +17,14 @@ type Player struct {
 	sentChunkKeys list.List
 }
 
-func (p Player) tick50() {
+func NewPlayer(id int32) *Player {
+	player := &Player{}
+	player.id=id
+	
+}
+
+//Tick50 50个tick调用一下
+func (p *Player) Tick50() {
 	p.checkSentChunkKeys()
 }
 
@@ -23,7 +32,7 @@ func (p Player) tick50() {
 //sendChunkKeys
 //记录已经发送的区块键，
 //如果超出范围，就进行倒计时消失。进入范围就把倒计时恢复
-func (p Player) checkSentChunkKeys() {
+func (p *Player) checkSentChunkKeys() {
 
 }
 
@@ -33,6 +42,6 @@ func (p Player) checkSentChunkKeys() {
 // 客户端 未在视野内的区块会过一段时间清除。（暂定10s）
 // 服务端 会过比客户端短的时间清除。（暂定5s）
 // 客户端 超出一定距离。直接清除
-func (p Player) updatePlayerChunkKeys() {
+func (p *Player) updatePlayerChunkKeys() {
 
 }
