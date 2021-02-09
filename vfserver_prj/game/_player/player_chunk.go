@@ -22,9 +22,9 @@ func init() {
 func ResetChunkRange(r int) {
 	loadChunkRadius = r
 	chunkRangeSet = make([]_block.BlockKey, r*r*r, 0)
-	for x := -r+1; x < loadChunkRadius; x++ {
-		for y := -r+1; y < loadChunkRadius; y++ {
-			for z := -r+1; z < loadChunkRadius; z++ {
+	for x := -r+1; x < r; x++ {
+		for y := -r+1; y < r; y++ {
+			for z := -r+1; z < r; z++ {
 				if x*x+y*y+z*z < r*r {
 					append(chunkRangeSet,
 						_chunk.NewChunkKey(
@@ -57,11 +57,9 @@ func (p *Player) updatePlayerChunkKeys() {
 	//计算区块，首先需要半径
 	for _,v:=range chunkRangeSet{
 		// if(v.X==v.Y==v.Z==0){
-
 		// }else if(v.X==v.Y==0||v.X==v.Z==0||v.Z==v.Y==0){
-
 		// }else if()
-
+		
 	}
 }
 
