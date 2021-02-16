@@ -37,8 +37,3 @@ func (p *Player) moveTo(pos base.Vector3) {
 	p.checkChunkMoved(oldPos)
 }
 
-//首次进入并配置人物位置，必然进行区块的加载（）
-func (p *Player) moveToAndUpdateChunk(pos base.Vector3) {
-	p.moveTo(pos)
-	p.updatePlayerChunkKeys(convPlayerPosToChunkPos(p.position))
-}

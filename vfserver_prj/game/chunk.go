@@ -1,9 +1,5 @@
 package game
 
-import (
-	"sync"
-)
-
 // "sync"
 // "math"
 const (
@@ -39,11 +35,6 @@ type ChunkModel struct {
 	BlockDataArr [chunkSize]int32
 }
 
-//ChunkManager 区块容器及管理
-type ChunkManager struct {
-	ChunkMap sync.Map
-}
-
 //新建区块
 func loadChunkModel() *ChunkModel {
 	cm := &ChunkModel{}
@@ -57,21 +48,6 @@ func loadChunkModel() *ChunkModel {
 
 	}
 	return cm
-}
-
-//如果区块未加载，就加载到内存。
-func (cm *ChunkManager) loadChunkIfNotExistAndSendToPlayer(player *Player, chunkKey *ChunkKey) {
-	chunk, exist := cm.ChunkMap.Load(chunkKey)
-	var chunkPtr *ChunkModel
-	if !exist {
-		chunkPtr = loadChunkModel()           //加载区块model
-		cm.ChunkMap.Store(chunkKey, chunkPtr) //存入map
-	} else {
-		chunkPtr = chunk.(*ChunkModel)
-	}
-	//执行发送
-
-	chunkPtr.ConvertToMsgAndSend(player)
 }
 
 // type GetChunkDataCopy
