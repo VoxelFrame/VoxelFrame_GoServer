@@ -1,11 +1,13 @@
 package network
 
 import (
-	"bufio"
+	// "bufio"
 	"fmt"
-	"io"
+	"vfserver/game"
+
+	// "io"
 	"net"
-	"time"
+	// "time"
 )
 
 func Init() {
@@ -38,30 +40,30 @@ func tcpPipe(conn *net.TCPConn) {
 		fmt.Println(" Disconnected : " + ipStr)
 		conn.Close()
 	}()
+	game.ConnGetIntoGame(conn)
+	// //获取一个连接的reader读取流
+	// reader := bufio.NewReader(conn)
+	// i := 0
+	// //接收并返回消息
+	// for {
+	// 	message, err := reader.ReadString('\n')
+	// 	if err != nil || err == io.EOF {
+	// 		break
+	// 	}
+	// 	fmt.Println(string(message))
 
-	//获取一个连接的reader读取流
-	reader := bufio.NewReader(conn)
-	i := 0
-	//接收并返回消息
-	for {
-		message, err := reader.ReadString('\n')
-		if err != nil || err == io.EOF {
-			break
-		}
-		fmt.Println(string(message))
+	// 	time.Sleep(time.Second * 3)
 
-		time.Sleep(time.Second * 3)
+	// 	msg := time.Now().String() + conn.RemoteAddr().String() + " Server Say hello! \n"
 
-		msg := time.Now().String() + conn.RemoteAddr().String() + " Server Say hello! \n"
+	// 	b := []byte(msg)
 
-		b := []byte(msg)
+	// 	conn.Write(b)
 
-		conn.Write(b)
+	// 	i++
 
-		i++
-
-		if i > 10 {
-			break
-		}
-	}
+	// 	if i > 10 {
+	// 		break
+	// 	}
+	// }
 }

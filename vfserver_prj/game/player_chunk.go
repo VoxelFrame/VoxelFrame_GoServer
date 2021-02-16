@@ -92,7 +92,7 @@ func (p *Player) checkSentChunkKeys() {
 func (p *Player) updatePlayerChunkKeys(curChunkPos ChunkKey) {
 	//计算区块，首先需要半径
 	for _, v := range chunkRangeSet {
-		if !p.PlayerChunkRecorder1.hasSent(v.Plus(curChunkPos)) { //如果记录中没法送该区块
+		if !p.PlayerChunkRecorder1.hasSent(v.Plus(curChunkPos)) { //如果记录中未发送过该区块
 			p.PlayerChunkRecorder1.setSent(v.Plus(curChunkPos))
 			// sendChunk(p, v)
 			p.worldPtr.ChunkManager.loadChunkIfNotExistAndSendToPlayer(p, &v)

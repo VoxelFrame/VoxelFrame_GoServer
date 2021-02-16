@@ -22,9 +22,9 @@ func NewPlayerManager(worldPtr1 *WorldModel) *PlayerManager {
 	// pm.playerMap[1]=&Player{}
 	pm.worldPtr = (worldPtr1)
 
-	player := NewPlayer(1, pm.worldPtr)
+	// player := NewPlayer(1, pm.worldPtr)
 
-	pm.playerMap.Store(1, unsafe.Pointer(player))
+	// pm.playerMap.Store(1, unsafe.Pointer(player))
 	// pm.onlineIds
 	return pm
 }

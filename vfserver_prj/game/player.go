@@ -1,6 +1,7 @@
 package game
 
 import (
+	"net"
 	"vfserver/base"
 	// "../../game"
 	// "../game"
@@ -13,6 +14,7 @@ type Player struct {
 	chunkKeyPos          ChunkKey
 	PlayerChunkRecorder1 PlayerChunkRecorder //记录玩家四周的区块状态
 	worldPtr             *WorldModel
+	conn                 *net.TCPConn
 }
 
 //NewPlayer 创建玩家实例
@@ -39,9 +41,4 @@ func (p *Player) moveTo(pos base.Vector3) {
 func (p *Player) moveToAndUpdateChunk(pos base.Vector3) {
 	p.moveTo(pos)
 	p.updatePlayerChunkKeys(convPlayerPosToChunkPos(p.position))
-}
-
-//在世界中生成玩家，此时会调用设置玩家坐标
-func (p *Player) firstGenerateInWorld() {
-	p.moveToAndUpdateChunk(base.NewVector3(0, 100, 0))
 }
