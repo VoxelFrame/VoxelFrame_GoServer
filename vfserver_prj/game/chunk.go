@@ -36,7 +36,7 @@ func (ck *ChunkKey) Plus(ck2 ChunkKey) ChunkKey {
 
 //ChunkModel 区块的数据模型
 type ChunkModel struct {
-	blockDataArr [chunkSize]BlockKey
+	BlockDataArr [chunkSize]int32
 }
 
 //ChunkManager 区块容器及管理
