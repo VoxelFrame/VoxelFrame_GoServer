@@ -1,10 +1,12 @@
 package game
 
 import (
+	"fmt"
 	VFproto "vfserver/proto"
 )
 
 func (cm *ChunkModel) makeMsgAndSendToPlayer(p *Player) {
+	fmt.Println("call makeMsgAndSendToPlayer")
 	//创建消息体
 	chunkMsg1 := &VFproto.ChunkMsg{}
 	//这样讲array转换为slice不会进行数据拷贝

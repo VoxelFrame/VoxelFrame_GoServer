@@ -40,7 +40,12 @@ func tcpPipe(conn *net.TCPConn) {
 		fmt.Println(" Disconnected : " + ipStr)
 		conn.Close()
 	}()
+
 	game.ConnGetIntoGame(conn)
+
+	for {
+
+	}
 	// //获取一个连接的reader读取流
 	// reader := bufio.NewReader(conn)
 	// i := 0

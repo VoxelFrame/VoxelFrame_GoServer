@@ -21,7 +21,7 @@ func NewPlayerManager(worldPtr1 *WorldModel) *PlayerManager {
 	// pm.playerMap = make(sync.Map[int]*Player,)
 	// pm.playerMap[1]=&Player{}
 	pm.worldPtr = (worldPtr1)
-
+	pm.playerMap = &sync.Map{} //创建sync.map
 	// player := NewPlayer(1, pm.worldPtr)
 
 	// pm.playerMap.Store(1, unsafe.Pointer(player))

@@ -1,6 +1,7 @@
 package game
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -11,6 +12,7 @@ type ChunkManager struct {
 
 //如果区块未加载，就加载到内存。
 func (cm *ChunkManager) loadChunkIfNotExistAndSendToPlayer(player *Player, chunkKey *ChunkKey) {
+	fmt.Println("call loadChunkIfNotExistAndSendToPlayer")
 	chunk, exist := cm.ChunkMap.Load(chunkKey)
 	var chunkPtr *ChunkModel
 	if !exist {

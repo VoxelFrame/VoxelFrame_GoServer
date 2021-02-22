@@ -2,6 +2,7 @@ package game
 
 import (
 	"container/list"
+	"fmt"
 	"vfserver/base"
 	// "../game"
 )
@@ -43,20 +44,20 @@ func (recorder *PlayerChunkRecorder) init() {
 }
 
 func init() {
+	// fmt.Println("player_chunk.go init()")
 	ResetChunkRange(5)
-	// fmt.Println("init 2")
 }
 
 //ResetChunkRange 重新设置区块加载范围，
 //考虑到后期可能要动态配置这样的
 func ResetChunkRange(r int) {
 	loadChunkRadius = r
-	chunkRangeSet = make([]ChunkKey, r*r*r, 0)
+	chunkRangeSet = make([]ChunkKey, 0, r*r*r)
 	for x := -r + 1; x < r; x++ {
 		for y := -r + 1; y < r; y++ {
 			for z := -r + 1; z < r; z++ {
 				if x*x+y*y+z*z < r*r {
-					_ = append(
+					chunkRangeSet = append(
 						chunkRangeSet,
 						NewChunkKey(x, y, z),
 					)
@@ -64,6 +65,7 @@ func ResetChunkRange(r int) {
 			}
 		}
 	}
+	// fmt.Println("chunk range set reseted:", chunkRangeSet)
 }
 
 //秒级轮询
@@ -90,8 +92,11 @@ func (p *Player) checkSentChunkKeys() {
 // 服务端 会过比客户端短的时间清除。（暂定5s）
 // 客户端,服务端 超出一定距离。直接清除
 func (p *Player) updatePlayerChunkKeys(curChunkPos ChunkKey) {
+	// fmt.Println("call updatePlayerChunkKeys")
+	// fmt.Println("show chunkRangeSet", chunkRangeSet)
 	//计算区块，首先需要半径
 	for _, v := range chunkRangeSet {
+		fmt.Println("scan chunk key:", v)
 		if !p.PlayerChunkRecorder1.hasSent(v.Plus(curChunkPos)) { //如果记录中未发送过该区块
 			p.PlayerChunkRecorder1.setSent(v.Plus(curChunkPos))
 			// sendChunk(p, v)
