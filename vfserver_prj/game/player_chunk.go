@@ -82,6 +82,7 @@ func (p *Player) checkSentChunkKeys() {
 // 	//加载区块数据若不存在
 
 // }
+var cnt = 0
 
 // 在移动的时候，判断区块位置是否变化，
 // 若变化则需要调用这个函数，
@@ -101,6 +102,8 @@ func (p *Player) updatePlayerChunkKeys(curChunkPos ChunkKey) {
 			p.PlayerChunkRecorder1.setSent(v.Plus(curChunkPos))
 			// sendChunk(p, v)
 			p.worldPtr.ChunkManager.loadChunkIfNotExistAndSendToPlayer(p, &v)
+			cnt++
+			fmt.Println("cnt ", cnt)
 		}
 	}
 }
