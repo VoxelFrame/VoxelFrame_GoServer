@@ -11,7 +11,11 @@ import (
 )
 
 func main() {
-	go game.Init()
-	network.Init()
+	// go game.Init()
+	// network.Init()
 
+}
+
+func convWords(){
+	
 }
